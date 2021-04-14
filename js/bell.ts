@@ -1,3 +1,4 @@
+import {naiveDateToDate} from './helpers';
 
 // This interface corresponds to responses from https://bell-api.spaghet.us/api/v1
 interface BellResponse {
@@ -36,8 +37,8 @@ export async function transformResponse(response: BellResponse): Promise<Bell> {
 		result.schedule.push({
 			name: i.name,
 			notice: i.notice,
-			start: new Date(i.start + '+00:00'),
-			end: new Date(i.end + '+00:00')
+			start: naiveDateToDate(i.start),
+			end: naiveDateToDate(i.end)
 		});
 	}
 

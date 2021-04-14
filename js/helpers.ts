@@ -14,3 +14,12 @@ export function download(filename: string, text: string) {
 
 	element.remove();
 }
+
+export function naiveDateToDate(naiveDate: string): Date {
+	const split = naiveDate.split(':');
+	const output = new Date(Date.now());
+	output.setHours(Number.parseInt(split[0], 10));
+	output.setMinutes(Number.parseInt(split[1], 10));
+	output.setSeconds(Number.parseInt(split[2], 10));
+	return output;
+}
