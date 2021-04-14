@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script type="module" async defer src="/configurator/index.js"></script>
+</head>
+
+<body>
+	<h1>Configure</h1>
+	<p>
+		This application uses a JSON file to keep track of your classes.<br>
+		You can create a schedule specification in your favorite text editor<br>
+		following the instructions below.
+	</p>
+	<pre>
+[ // This is the array containing all periods.
+	{ // This is one period.
+		// "name" will be shown on-screen.
+		"name": "PE",
+		// If "url" is present, "name" will be a link to "url".
+		"url": "https://meet.google.com/...",
+		// "regex" is a regular expression that matches ETHSBell's name for this period.
+		"regex": "^\\D*2\\D*$", // Matches 2nd period.
+		// "pe" is the last name of the PE teacher that teaches this class, if any.
+		// It is used to integrate with the PE Board.
+		"pe": "Brewer"
+	}
+]</pre><br>
+	<input id="cfg" type="file"><br>
+	<button id="upload">Upload</button><br>
+	<span id="status"></span>
+	<br>
+	<button id="download">Download</button>
+</body>
+
+</html>

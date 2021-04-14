@@ -1,0 +1,46 @@
+html {
+	overflow-y: hidden;
+	overflow-x: hidden;
+}
+
+body {
+	display: table-cell;
+	text-align: center;
+	vertical-align: middle;
+	height: 100vh;
+	width: 100vw;
+}
+
+@media (prefers-color-scheme: dark) {
+	body {
+		background-color: black;
+		color: lightgray;
+	}
+}
+
+.bottom-menu {
+	position: absolute;
+	bottom: 0;
+	opacity: 0%;
+	background-color: gray;
+	color: black;
+	width: 100%;
+	padding: 2vh;
+	text-align: center;
+}
+.bottom-menu:hover {
+	opacity: 100%;
+}
+
+pre {
+	display: inline-block;
+	text-align: left;
+	tab-size: 2;
+	-moz-tab-size: 2;
+	-o-tab-size: 2;
+	padding: 10px;
+	border-radius: 10px;
+	border-left-style: solid;
+	border-right-style: solid;
+	border-color: purple;
+}

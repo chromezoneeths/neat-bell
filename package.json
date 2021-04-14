@@ -1,0 +1,25 @@
+{
+  "name": "better-bell",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "snowpack dev",
+    "build": "snowpack build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "snowpack": "^3.2.2",
+    "xo": "^0.38.2"
+  },
+  "dependencies": {
+    "milligram": "^1.4.1"
+  },
+  "xo": {
+    "rules": {
+      "import/no-unassigned-import": 0
+    }
+  }
+}
