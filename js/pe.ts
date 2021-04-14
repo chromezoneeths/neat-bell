@@ -1,3 +1,5 @@
+import {getElement} from './helpers';
+
 export interface Period {
 	location: string;
 	nodress: boolean;
@@ -17,6 +19,7 @@ export async function get(teacher: string, regex: RegExp): Promise<Period | unde
 	});
 	if (!data) {
 		console.error('HEY YOU!\nLooking through logs to diagnose your broken PE board integration?\nCheck if an extension is blocking Google Scripts.\nPrivacy Badger is known to do this.');
+		getElement('warnings').innerHTML += 'Can\'t reach the PE board service.';
 		return undefined;
 	}
 
@@ -30,8 +33,12 @@ export async function get(teacher: string, regex: RegExp): Promise<Period | unde
 					return i[period];
 				}
 			}
+
+			getElement('warnings').innerHTML += `Can't find data for ${teacher} matching ${regex.toString()}.`;
+			return undefined;
 		}
 	}
 
+	getElement('warnings').innerHTML += `Can't find data for ${teacher}.`;
 	return undefined;
 }

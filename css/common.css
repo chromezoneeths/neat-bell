@@ -44,3 +44,7 @@ pre {
 	border-right-style: solid;
 	border-color: purple;
 }
+
+#warnings {
+	color: red
+}

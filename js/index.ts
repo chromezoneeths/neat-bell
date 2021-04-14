@@ -13,6 +13,7 @@ getElement('enable-notifs').addEventListener('click', async () => {
 
 async function update(): Promise<void> {
 	// Set up
+	getElement('warnings').innerHTML = '';
 	const now = new Date(Date.now());
 	const time = `${now.getHours()}:${now.getMinutes()}`;
 	const schedule = await Bell.getSchedule();

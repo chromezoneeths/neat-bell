@@ -1,4 +1,4 @@
-import {naiveDateToDate} from './helpers';
+import {getElement, naiveDateToDate} from './helpers';
 
 // This interface corresponds to responses from https://bell-api.spaghet.us/api/v1
 interface BellResponse {
@@ -60,9 +60,11 @@ export async function getSchedule(): Promise<Bell | undefined> {
 	}
 
 	if (cached.result) {
+		getElement('warnings').innerHTML += 'Using outdated cache because the API can\'t be accessed.\n';
 		return cached.result;
 	}
 
+	getElement('warnings').innerHTML += 'Can\'t get the schedule from the cache or the network!';
 	return undefined;
 }
 
