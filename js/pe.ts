@@ -28,7 +28,7 @@ export async function get(teacher: string, regex: RegExp): Promise<Period | unde
 	for (const i of data) {
 		if (i.name === teacher) {
 			for (const period of Object.getOwnPropertyNames(i).filter(() => i !== 'name')) {
-				if (regex.test(period)) {
+				if ((new RegExp(regex)).test(period)) {
 					console.log(i, period);
 					return i[period];
 				}

@@ -88,7 +88,11 @@ export async function populateCurrent(schedule: Bell, context: {previous: number
 
 		if (matched?.pe) {
 			const peState = await Pe.get(matched.pe, matched.regex);
-			getElement('pe').innerHTML = `${peState.location}${peState.nodress ? ', No dress' : ''}${peState.heart ? ', HR Monitor' : ''}${peState.chromebook ? ', Chromebook' : ''}`;
+			if (peState) {
+				getElement('pe').innerHTML = `${peState.location}${peState.nodress ? ', No dress' : ''}${peState.heart ? ', HR Monitor' : ''}${peState.chromebook ? ', Chromebook' : ''}`;
+			} else {
+				getElement('pe').innerHTML = '';
+			}
 		} else {
 			getElement('pe').innerHTML = '';
 		}
