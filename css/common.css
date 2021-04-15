@@ -1,17 +1,16 @@
-html {
-	overflow-y: hidden;
-	overflow-x: hidden;
-}
-
 body {
 	display: table-cell;
 	text-align: center;
 	vertical-align: middle;
-	height: 100vh;
-	width: 100vw;
+	height: 98vh;
+	width: 98vw;
 	font-family: sans-serif;
+	margin: 0;
+	padding: 0;
+}
+
+body.bigtext {
 	font-size: 3vw;
-	/* line-height: 200%; */
 }
 
 @media (prefers-color-scheme: dark) {
@@ -27,7 +26,7 @@ body {
 	opacity: 0%;
 	background-color: gray;
 	color: black;
-	width: 100%;
+	width: 97vw;
 	padding: 2vh;
 	text-align: center;
 }
@@ -46,6 +45,9 @@ pre {
 	border-left-style: solid;
 	border-right-style: solid;
 	border-color: purple;
+	max-width: 80vw;
+	word-wrap: break-word;
+	white-space: pre-wrap;       /* Since CSS 2.1 */
 }
 
 #warnings {
