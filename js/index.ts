@@ -15,7 +15,7 @@ async function update(): Promise<void> {
 	// Set up
 	getElement('warnings').innerHTML = '';
 	const now = new Date(Date.now());
-	const time = `${now.getHours()}:${now.getMinutes()}`;
+	const time = ClockBuild.toTimeOfDay(new Date(Date.now()));
 	const schedule = await Bell.getSchedule();
 	const cfg = JSON.parse(localStorage.getItem('cfg')) || [];
 

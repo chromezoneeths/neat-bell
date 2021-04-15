@@ -45,7 +45,7 @@ export async function populatePrevious(schedule: Bell, previous: number | undefi
 			}
 		}
 
-		const shown = `${matched ? matched.name as string : previous_.name} ended at ${(new Date(previous_.end)).getHours()}:${(new Date(previous_.end)).getMinutes()}`;
+		const shown = `${matched ? matched.name as string : previous_.name} ended at ${toTimeOfDay(new Date(previous_.end))}`;
 		if (matched?.url) {
 			getElement('previous').innerHTML = `<a href="${matched.url as string}">${shown}</a>`;
 		} else {
@@ -79,7 +79,7 @@ export async function populateCurrent(schedule: Bell, context: {previous: number
 			}
 		}
 
-		const shown = `${matched ? matched.name as string : current_.name} from ${(new Date(current_.start)).getHours()}:${(new Date(current_.start)).getMinutes()} to ${(new Date(current_.end)).getHours()}:${(new Date(current_.end)).getMinutes()}`;
+		const shown = `${matched ? matched.name as string : current_.name} from ${toTimeOfDay(new Date(current_.start))} to ${toTimeOfDay(new Date(current_.end))}`;
 		if (matched?.url) {
 			getElement('current').innerHTML = `<a href="${matched.url as string}">${shown}</a>`;
 		} else {
@@ -123,7 +123,7 @@ export async function populateNext(schedule: Bell, next: number | undefined, cfg
 			}
 		}
 
-		const shown = `${matched ? matched.name as string : next_.name} starts at ${(new Date(next_.start)).getHours()}:${(new Date(next_.start)).getMinutes()}`;
+		const shown = `${matched ? matched.name as string : next_.name} starts at ${toTimeOfDay(new Date(next_.start))}`;
 		if (matched?.url) {
 			getElement('next').innerHTML = `<a href="${matched.url as string}">${shown}</a>`;
 		} else {
@@ -132,3 +132,22 @@ export async function populateNext(schedule: Bell, next: number | undefined, cfg
 	}
 }
 
+export function toTimeOfDay(date: Date): string {
+	let hours = date.getHours();
+	const minutes = date.getMinutes();
+	const pm = hours > 12;
+	if (pm) {
+		hours -= 12;
+	}
+
+	return `${padNumber(hours, 2)}:${padNumber(minutes, 2)} ${pm ? 'PM' : 'AM'}`;
+}
+
+export function padNumber(number: number, length: number): string {
+	let result = number.toString();
+	while (result.length < length) {
+		result = '0' + result;
+	}
+
+	return result;
+}
