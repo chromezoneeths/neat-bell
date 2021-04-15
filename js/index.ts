@@ -24,13 +24,13 @@ async function update(): Promise<void> {
 	// Figure out which period it is
 	const {previous, current, next} = await ClockBuild.currentPeriod(schedule, now);
 
+	// Populate clock
+	getElement('clock').innerHTML = time;
+
 	// Detect if we need to do anything
 	if (current !== undefined && oldCurrent === current) {
 		return;
 	}
-
-	// Populate clock
-	getElement('clock').innerHTML = time;
 
 	void ClockBuild.populatePrevious(schedule, previous, cfg);
 
