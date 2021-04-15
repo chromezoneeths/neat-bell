@@ -18,6 +18,7 @@ export async function currentPeriod(schedule: Bell, now: Date): Promise<{previou
 		for (let i = 0; i < schedule.schedule.length; ++i) {
 			if ((new Date(schedule.schedule[i].start)).getTime() < now.getTime() && (new Date(schedule.schedule[i].end)).getTime() > now.getTime()) {
 				current = i;
+				next = i + 1;
 				break;
 			} else if ((new Date(schedule.schedule[i].end)).getTime() < now.getTime()) {
 				previous = i;
