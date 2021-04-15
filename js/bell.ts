@@ -73,10 +73,11 @@ function cache(): {result: Bell | undefined; valid: boolean} {
 	const cachedDate = new Date(JSON.parse(localStorage.getItem('cache_date')));
 	const now = new Date(Date.now());
 	const elapsed = now.getTime() - cachedDate.getTime();
+	const isSameDay = now.getDate() === cachedDate.getDate();
 
 	return {
 		result: cached,
-		valid: (elapsed < 8 * 60 * 60 * 1000)
+		valid: (elapsed < 8 * 60 * 60 * 1000) && isSameDay
 	};
 }
 
