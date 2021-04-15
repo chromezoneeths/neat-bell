@@ -87,12 +87,14 @@ export async function populateCurrent(schedule: Bell, context: {previous: number
 		}
 
 		if (matched?.pe) {
-			const peState = await Pe.get(matched.pe, matched.regex);
-			if (peState) {
-				getElement('pe').innerHTML = `${peState.location}${peState.nodress ? ', No dress' : ''}${peState.heart ? ', HR Monitor' : ''}${peState.chromebook ? ', Chromebook' : ''}`;
-			} else {
-				getElement('pe').innerHTML = '';
-			}
+			(async () => {
+				const peState = await Pe.get(matched.pe, matched.regex);
+				if (peState) {
+					getElement('pe').innerHTML = `${peState.location}${peState.nodress ? ', No dress' : ''}${peState.heart ? ', HR Monitor' : ''}${peState.chromebook ? ', Chromebook' : ''}`;
+				} else {
+					getElement('pe').innerHTML = '';
+				}
+			})();
 		} else {
 			getElement('pe').innerHTML = '';
 		}
