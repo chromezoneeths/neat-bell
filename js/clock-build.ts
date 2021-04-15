@@ -112,7 +112,7 @@ export async function populateCurrent(schedule: Bell, context: {previous: number
 }
 
 export async function populateNext(schedule: Bell, next: number | undefined, cfg: any) {
-	if (next === undefined) {
+	if (next === undefined || schedule.schedule[next] === undefined) {
 		getElement('next').innerHTML = '(school ends)';
 	} else {
 		const next_ = schedule.schedule[next];
