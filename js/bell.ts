@@ -82,5 +82,5 @@ function cache(): {result: Bell | undefined; valid: boolean} {
 }
 
 async function get(): Promise<BellResponse> {
-	return (await fetch('https://bell-api.spaghet.us/api/v1')).json();
+	return (await fetch('https://bell-api.wolo.dev/api/v1')).json();
 }
